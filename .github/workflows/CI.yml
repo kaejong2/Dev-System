@@ -22,6 +22,20 @@ jobs:
 
       - name: Build Images
         run: |
+          docker build kubeflow_pipeline/peprocess -t kaejong/mnist-pre-data
+          docker push kaejong/mnist-pre-data
+          docker build kubeflow_pipeline/valid_data -t kaejong/mnist-val-data
+          docker push kaejong/mnist-val-data
+          docker build kubeflow_pipeline/train_model -t kaejong/mnist-train-model
+          docker push kaejong/mnist-train-model
+          docker build kubeflow_pipeline/embedding -t kaejong/mnist-embedding
+          docker push kaejong/mnist-embedding
+          docker build kubeflow_pipeline/train_faiss -t kaejong/mnist-train-faiss
+          docker push kaejong/mnist-train-faiss
+          docker build kubeflow_pipeline/analysis_model -t kaejong/mnist-analysis
+          docker push kaejong/mnist-analysis
+          docker build kubeflow_pipeline/deploy -t kaejong/mnist-deploy
+          docker push kaejong/mnist-deploy
         
       
       - name: Slack Notification
