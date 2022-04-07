@@ -22,9 +22,6 @@ jobs:
 
       - name: Build Images
         run: |
-          docker build kubeflow_pipeline/0_data -t byeongjokim/mnist-pre-data
-          docker push byeongjokim/mnist-pre-data
-          (중략)
       
       - name: Slack Notification
         if: always()
