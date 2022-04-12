@@ -5,8 +5,7 @@ from torch.nn import Parameter
 import torch.nn.functional as F
 
 class ArcMarginProduct(nn.Module):
-    def __init__(self, in_feature=128, out_feature=10, s=30.0, m=0.50,
-                 easy_margin=False):
+    def __init__(self, in_feature=128, out_feature=10, s=30.0, m=0.50, easy_margin=False):
         super(ArcMarginProduct, self).__init__()
         self.in_feature = in_feature
         self.out_feature = out_feature
@@ -19,6 +18,7 @@ class ArcMarginProduct(nn.Module):
         self.cos_m = math.cos(m)
         self.sin_m = math.sin(m)
 
+        # make the function cos(theta+m) monotonic decreasing while theta in [0°,180°]
         self.th = math.cos(math.pi - m)
         self.mm = math.sin(math.pi - m) * m
 
@@ -34,6 +34,7 @@ class ArcMarginProduct(nn.Module):
         else:
             phi = torch.where((cosine - self.th) > 0, phi, cosine - self.mm)
 
+        #one_hot = torch.zeros(cosine.size(), device='cuda' if torch.cuda.is_available() else 'cpu')
         one_hot = torch.zeros_like(cosine)
         one_hot.scatter_(1, label.view(-1, 1), 1)
         output = (one_hot * phi) + ((1.0 - one_hot) * cosine)

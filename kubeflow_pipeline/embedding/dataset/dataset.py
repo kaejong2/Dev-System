@@ -11,7 +11,7 @@ from bisect import bisect
 
 class EmbedDataset(data.Dataset):
     def __init__(self, npy_files_path):
-        npy_images_files = glob.glob(os.path.join(npy_files_path, "*images*.npy"))
+        npy_images_files = glob.glob(os.path.join(npy_files_path, "*faiss_images*.npy"))
         npy_images_files.sort()
 
         self.image_memmaps = [np.load(npy_images_file, mmap_mode="r") for npy_images_file in npy_images_files]

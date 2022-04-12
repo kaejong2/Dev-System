@@ -46,15 +46,15 @@ def validation_data(train_data_file, test_data_file, faiss_train_data_file, fais
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
 
-    parser.add_argument('--train_data_path', type=str, default="/data/mnist/train")
-    parser.add_argument('--test_data_path', type=str, default="/data/mnist/test")
+    parser.add_argument('--train_data_path', type=str, default="/home/ljj/workspace/mnist/train")
+    parser.add_argument('--test_data_path', type=str, default="/home/ljj/workspace/mnist/test")
     parser.add_argument('--train_data_file', type=str, default="train_mnist")
     parser.add_argument('--test_data_file', type=str, default="test_mnist")
 
-    parser.add_argument('--faiss_train_data_path', type=str, default="/data/faiss/train")
-    parser.add_argument('--faiss_test_data_path', type=str, default="/data/faiss/test")
-    parser.add_argument('--faiss_train_data_file', type=str, default="faiss_train")
-    parser.add_argument('--faiss_test_data_file', type=str, default="faiss_test")
+    parser.add_argument('--faiss_train_data_path', type=str, default="/home/ljj/workspace/mnist/train")
+    parser.add_argument('--faiss_test_data_path', type=str, default="/home/ljj/workspace/mnist/test")
+    parser.add_argument('--faiss_train_data_file', type=str, default="train_faiss")
+    parser.add_argument('--faiss_test_data_file', type=str, default="test_faiss")
 
     parser.add_argument('--image_width', type=int, default=28)
     parser.add_argument('--image_height', type=int, default=28)

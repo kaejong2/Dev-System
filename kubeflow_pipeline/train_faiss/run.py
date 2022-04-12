@@ -15,7 +15,7 @@ def save_model(face_index, labels, model_file_name, label_file_name):
 
 def parse_npy_files(npy_path):
     npy_embeddings_files = glob.glob(os.path.join(npy_path, "*embeddings*.npy"))
-    npy_labels_files = glob.glob(os.path.join(npy_path, "*labels*.npy"))
+    npy_labels_files = glob.glob(os.path.join(npy_path, "*faiss_labels*.npy"))
 
     npy_embeddings_files.sort()
     npy_labels_files.sort()
@@ -82,13 +82,13 @@ def main(args):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='')
 
-    parser.add_argument('--faiss_train_data_path', type=str, default="/data/faiss/train")
-    parser.add_argument('--faiss_test_data_path', type=str, default="/data/faiss/test")
+    parser.add_argument('--faiss_train_data_path', type=str, default="/home/ljj/workspace/mnist/train")
+    parser.add_argument('--faiss_test_data_path', type=str, default="/home/ljj/workspace/mnist/test")
 
     parser.add_argument('--d_embedding', type=int, default=128)
     parser.add_argument('--class_nums', type=int, default=10)
 
-    parser.add_argument('--model_dir', type=str, default='/model')
+    parser.add_argument('--model_dir', type=str, default='/home/ljj/workspace/model/')
     parser.add_argument('--faiss_model_file', type=str, default='faiss_index.bin')
     parser.add_argument('--faiss_label_file', type=str, default='faiss_label.json')
 

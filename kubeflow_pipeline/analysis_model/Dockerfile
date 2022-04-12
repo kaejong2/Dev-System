@@ -5,5 +5,4 @@ RUN apt-get install -y libgtk2.0-dev
 RUN pip install -U pandas scikit-learn numpy ujson opencv-python==4.4.0.46 faiss-cpu==1.6.1
 COPY . /app
 WORKDIR /app
-ENTRYPOINT ["python"]
-CMD ["run.py"]
+ENTRYPOINT ["python", "run.py"]

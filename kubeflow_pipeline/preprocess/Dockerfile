@@ -6,6 +6,5 @@ COPY . /app
 WORKDIR /app
 RUN pip install -U numpy opencv-python==4.4.0.46
 
-ENTRYPOINT ["python"]
-CMD ["run.py"]
+ENTRYPOINT ["python" , "run.py"]
 

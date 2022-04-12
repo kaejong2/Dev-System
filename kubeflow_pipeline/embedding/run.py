@@ -16,7 +16,7 @@ def inference_and_save(dataloader, model, npy_interval, npy_path, filename, d_em
         with torch.no_grad():
             embeddings = model(images)
 
-        total_embeddings = np.append(total_embeddings, embeddings.detach().numpy(), axis=0)
+        total_embeddings = np.append(total_embeddings, embeddings.detach().cpu().numpy(), axis=0)
 
         if len(total_embeddings) == npy_interval:
             np.save(
@@ -97,11 +97,11 @@ def main(args):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='')
 
-    parser.add_argument('--model_dir', type=str, default='/model/')
+    parser.add_argument('--model_dir', type=str, default='/home/ljj/workspace/model/')
     parser.add_argument('--model_file', type=str, default='model.pt')
 
-    parser.add_argument('--faiss_train_data_path', type=str, default="/data/faiss/train")
-    parser.add_argument('--faiss_test_data_path', type=str, default="/data/faiss/test")
+    parser.add_argument('--faiss_train_data_path', type=str, default="/home/ljj/workspace/mnist/train")
+    parser.add_argument('--faiss_test_data_path', type=str, default="/home/ljj/workspace/mnist/test")
     parser.add_argument('--faiss_train_data_file', type=str, default="faiss_train")
     parser.add_argument('--faiss_test_data_file', type=str, default="faiss_test")
 

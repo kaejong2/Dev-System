@@ -1,3 +1,3 @@
-kubenetes
+kubernetes
 datetime
 pyyaml
