@@ -186,7 +186,7 @@ if __name__=="__main__":
 
     pipeline_name = "Mnist"
     pipeline_package_path = "pipeline.zip"
-    version = "v0.01"
+    version = "v0.02"
 
     experiment_name = "For Develop"
     run_name = "kubeflow study {}".format(version)
