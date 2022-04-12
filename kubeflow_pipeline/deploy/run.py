@@ -78,7 +78,7 @@ def archive(args, version):
 
 def serving(args, version):
     model_name_version = args.model_name+"_"+version
-    config.load_incluster_config()
+    config.load_kube_config()
 
     k8s_apps_v1 = client.AppsV1Api()
     template = client.V1PodTemplateSpec(
@@ -228,7 +228,7 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='')
     parser.add_argument('--model_name', type=str, default="embedding")
 
-    parser.add_argument('--model_dir', type=str, default='/model')
+    parser.add_argument('--model_dir', type=str, default='/home/ljj/workspace/model')
     parser.add_argument('--model_file', type=str, default='model.pt')
     parser.add_argument('--faiss_model_file', type=str, default='faiss_index.bin')
     parser.add_argument('--faiss_label_file', type=str, default='faiss_label.json')
@@ -238,8 +238,8 @@ if __name__ == "__main__":
 
     parser.add_argument('--handler', type=str, default="handler.py")
 
-    parser.add_argument('--export_path', type=str, default='/deploy-model/model-store')
-    parser.add_argument('--config_path', type=str, default='/deploy-model/config')
+    parser.add_argument('--export_path', type=str, default='/home/ljj/workspace/deploy-model/model-store')
+    parser.add_argument('--config_path', type=str, default='/home/ljj/workspace/deploy-model/config')
 
     parser.add_argument('--max_num_models', type=int, default=3)
 
