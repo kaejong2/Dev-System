@@ -149,7 +149,7 @@ def mnist_pipeline():
                        # '--config_path', os.path.join(volume_mount_path, 'deploy-model/config'),
                        # '--max_num_models', 3,
                        # '--pred_port', 8082,
-                       # '--manage_port', 8083,
+                      # '--manage_port', 8083,
                        # '--metric_port', 8084,
                        # '--deploy_name', 'torchserve',
                        # '--svc_name', 'torchserve',
