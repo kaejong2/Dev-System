@@ -5,8 +5,6 @@ import os
 import glob
 from datetime import datetime
 import xml.etree.ElementTree as ET
-import cv2
-import matplotlib.pyplot as plt
 import warnings
 from sklearn.model_selection import train_test_split
 from PIL import Image
@@ -101,12 +99,12 @@ def split_dataset(input_data, output_path, img_width, img_height):
     os.makedirs(f'{output_path}/val/labels', exist_ok=True)
 
     #copy data
-    # for i, data_type in enumerate(image_lst):
-        # for image in data_type:
-            # print(image)
-            # img = Image.open(f'{input_data}/images/{image}')
-            # img1 = img.resize((640, 480))
-            # _ = img1.save(f'{output_path}/{folder_name[i]}/images/{image}')
+    for i, data_type in enumerate(image_lst):
+        for image in data_type:
+            print(image)
+            img = Image.open(f'{input_data}/images/{image}')
+            img1 = img.resize((640, 480))
+            _ = img1.save(f'{output_path}/{folder_name[i]}/images/{image}')
 
     print(df.head())
 
@@ -140,6 +138,19 @@ def split_dataset(input_data, output_path, img_width, img_height):
             text = "\n".join(box_list)
             with open(f'{output_path}/{folder_name[i]}/labels/{name}.txt', "w") as file:
                 file.write(text)
+
+
+
+    yaml_text = """ train: /home/jovyan/data/train/images
+    val: /home/ljj/jovyan/data/val/images
+
+    nc: 3
+    names: ['with_mask', 'mask_weared_incorrect', 'without_mask']"""
+
+    with open("/home/ljj/ws/dataset/data/data.yaml", 'w') as file:
+        file.write(yaml_text)
+
+    print("Complete Data Prepare ! ! !")
 
 
 

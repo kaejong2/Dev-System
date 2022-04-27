@@ -4,7 +4,7 @@ RUN apt-get update
 RUN apt-get install -y libgl1-mesa-dev
 COPY . /app
 WORKDIR /app
-RUN pip install -U numpy opencv-python==4.4.0.46
+RUN pip install -U numpy pandas scikit-learn pillow
 
 ENTRYPOINT ["python" , "run.py"]
 

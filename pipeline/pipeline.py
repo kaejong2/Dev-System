@@ -6,7 +6,7 @@ import requests
 def preprocess_op(pvc_name, volume_name, volume_mount_path):
     return dsl.ContainerOp(
         name='Preprocess Data',
-        image='kaejong/bentoml-surface-preprocessing:v0.1',
+        image='kaejong/mlops-mask-detection:v0.1',
         arguments=['--input-path', f'{volume_mount_path}/mask',
                    '--output-path', f'{volume_mount_path}/data',
                    '--img-width', 640,
